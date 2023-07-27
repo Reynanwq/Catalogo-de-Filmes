@@ -1,8 +1,8 @@
 package com.api.catalogo_filmes.service;
 
+import com.api.catalogo_filmes.entities.Movie;
 import com.api.catalogo_filmes.repository.MovieRepository;
 import org.springframework.stereotype.Service;
-import com.api.catalogo_filmes.arm.Movie;
 
 @Service
 public class CrudMovieService {
@@ -12,9 +12,9 @@ public class CrudMovieService {
     }
 
     public void insertData(){
-        Movie batman = new Movie(1, "Batman", "Reynan", "Reynan, Paulo", "Batman combatendo o crime", "Ação e Terror", 2005, "88 Minutos", "+18 Anos", "Os criticos adoraram o filme", "Warner Bros", "Estados Unidos", "Critica dos usuarios");
+     //   Movie batman = new Movie(1, "Batman", "Reynan", "Reynan, Paulo", "Batman combatendo o crime", "Ação e Terror", 2005, "88 Minutos", "+18 Anos", "Os criticos adoraram o filme", "Warner Bros", "Estados Unidos", "Critica dos usuarios");
 
-        this.movieRepository.save(batman);
+     //   this.movieRepository.save(batman);
         System.out.println("Movie add success");
     }
 }

@@ -1,9 +1,10 @@
 package com.api.catalogo_filmes.repository;
 
-import com.api.catalogo_filmes.arm.Movie;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.api.catalogo_filmes.entities.Movie;
+
 @Repository
-public interface MovieRepository extends CrudRepository<Movie, Integer> {
+public interface MovieRepository extends CrudRepository<Movie, Long> {
 }
