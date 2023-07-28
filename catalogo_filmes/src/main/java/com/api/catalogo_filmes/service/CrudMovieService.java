@@ -12,9 +12,9 @@ public class CrudMovieService {
     }
 
     public void insertData(){
-     //   Movie batman = new Movie(1, "Batman", "Reynan", "Reynan, Paulo", "Batman combatendo o crime", "Ação e Terror", 2005, "88 Minutos", "+18 Anos", "Os criticos adoraram o filme", "Warner Bros", "Estados Unidos", "Critica dos usuarios");
+        //Movie batman = new Movie(1L, "Batman", "asd", "asd", "asdas", "asdas", "asdasd", "asdasd", "asdasd");
 
-     //   this.movieRepository.save(batman);
+       // this.movieRepository.save(batman);
         System.out.println("Movie add success");
     }
 }
