@@ -12,20 +12,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "tb_user")
 public class User implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+   
     private String name;
-    @Column(nullable = false)
+  
     private String email;
-    @Column(nullable = false)
+    
     private String password;
-    @Column(nullable = false)
+   
     private String date_birth;
-    @Column(nullable = false)
+   
     private String gender;
 
     public User(){};
@@ -87,7 +91,28 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
+    
+    
+    
+    
     @Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	@Override
     public String toString() {
         return "User{" +
                 "id=" + id +
@@ -98,4 +123,7 @@ public class User implements Serializable {
                 ", gender='" + gender + '\'' +
                 '}';
     }
+    
+    
+    
 }
