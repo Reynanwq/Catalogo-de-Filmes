@@ -1,15 +1,16 @@
 package com.api.catalogo_filmes.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_user")
@@ -33,7 +34,7 @@ public class User implements Serializable {
     private String gender;
     
     @OneToMany(mappedBy="author")
-    private Set<Commentt> commentt=new HashSet<>();
+    private Set<Comment> comment=new HashSet<>();
 
     public User(){};
 
@@ -95,13 +96,14 @@ public class User implements Serializable {
     }
     
     
-    public Set<Commentt> getCommentt() {
-		return commentt;
+    public Set<Comment> getComment() {
+		return comment;
 	}
     
-    public void addCommentt(Commentt comment){
-    	commentt.add(comment);
+    public void addComment(Comment c){
+    	comment.add(c);
     }
+    
 
 	@Override
 	public int hashCode() {

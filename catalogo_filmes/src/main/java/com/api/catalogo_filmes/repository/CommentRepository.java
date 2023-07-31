@@ -1,9 +1,11 @@
 package com.api.catalogo_filmes.repository;
 
-import com.api.catalogo_filmes.entities.Comment;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.api.catalogo_filmes.entities.Comment;
+
 @Repository
-public interface CommentRepository extends CrudRepository<Comment, Integer> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+	
 }

@@ -1,49 +1,69 @@
 package com.api.catalogo_filmes.entities;
 
-import jakarta.persistence.*;
-
 import java.io.Serializable;
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "comment")
 public class Comment implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Integer id;
-    @Column(nullable = false)
-    private String author;
-    @Column(nullable = false)
-    private String date;
-    @Column(nullable = false)
-    private String text;
-    @Column(nullable = false)
-    private String time;
+    private static final long serialVersionUID = 1L;
 
-    public Comment(Integer id, String author, String date, String text, String time) {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
+ 
+    private String date;
+  
+    private String text;
+    
+    private String time;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="movie_id")
+    private Movie movie;
+    public Comment() {
+       
+    }
+
+    public Comment(Long id, User author,Movie movie, String date, String text, String time) {
         this.id = id;
         this.author = author;
+        this.movie=movie;
         this.date = date;
         this.text = text;
         this.time = time;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
-    public String getAuthor() {
+    @JsonIgnore
+    public User getAuthor() {
         return author;
     }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public String getNameAuthor() {
+    	return author.getName();
     }
-
+    
+    
     public String getDate() {
         return date;
     }
@@ -67,8 +87,18 @@ public class Comment implements Serializable {
     public void setTime(String time) {
         this.time = time;
     }
+    
+    
+    
+    @JsonIgnore
+    public Movie getMovie() {
+		return movie;
+	}
+    public String getNameMovie() {
+    	return movie.getTitle();
+    }
 
-    @Override
+	@Override
     public String toString() {
         return "Comment{" +
                 "id=" + id +
@@ -78,4 +108,23 @@ public class Comment implements Serializable {
                 ", time='" + time + '\'' +
                 '}';
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comment other = (Comment) obj;
+		return Objects.equals(id, other.id);
+	}
+    
+    
 }

@@ -13,7 +13,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -34,8 +33,10 @@ public class Movie  implements Serializable {
 	private String studio;
 	private String originalLanguage;
 	private String countryOfOrigin;
+	
 	@OneToMany(mappedBy = "movie")
-	private Set<Commentt> commentt=new HashSet<>();
+	private Set<Comment> comment=new HashSet<>();
+	
 	@JsonIgnore
 	private List<Integer> userRating=new ArrayList<>();
 	
@@ -149,8 +150,8 @@ public class Movie  implements Serializable {
 	}
 	
 
-	public Set<Commentt> getCommentt() {
-		return commentt;
+	public Set<Comment> getComment() {
+		return comment;
 	}
 	
 	
