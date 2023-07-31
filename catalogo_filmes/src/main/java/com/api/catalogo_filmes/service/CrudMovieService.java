@@ -1,20 +1,51 @@
 package com.api.catalogo_filmes.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.api.catalogo_filmes.entities.Movie;
 import com.api.catalogo_filmes.repository.MovieRepository;
-import org.springframework.stereotype.Service;
 
 @Service
 public class CrudMovieService {
-    private MovieRepository movieRepository;
-    public CrudMovieService(MovieRepository movieRepository){
-        this.movieRepository = movieRepository;
-    }
 
-    public void insertData(){
-        //Movie batman = new Movie(1L, "Batman", "asd", "asd", "asdas", "asdas", "asdasd", "asdasd", "asdasd");
+	@Autowired
+	private MovieRepository movieRepository;
+	
+	public List<Movie>findALL(){
+		return movieRepository.findAll();
+	}
+	
+	public Movie findById(Long id) {
+		Optional<Movie> obj =movieRepository.findById(id);
+		return obj.get();
+	}
+	
+	public Movie insert(Movie obj) {
+		return movieRepository.save(obj);
+	}
+	public void delete(Long id) {
+		movieRepository.deleteById(id);			
+	} 
+	
+	public Movie update(Long id, Movie obj) {
+		Movie entity = movieRepository.getReferenceById(id);
+		updateData(entity,obj);
+		return movieRepository.save(entity);
+		
+	}
 
-       // this.movieRepository.save(batman);
-        System.out.println("Movie add success");
-    }
+	private void updateData(Movie entity, Movie obj) {	
+		
+		if(obj.getTitle()!=null) {
+			entity.setTitle(obj.getTitle());
+			}
+		
+		
+	}
+	
+	
 }

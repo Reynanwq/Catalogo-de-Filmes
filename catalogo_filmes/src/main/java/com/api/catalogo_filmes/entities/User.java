@@ -20,7 +20,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
    
     private String name;
   
@@ -31,10 +31,13 @@ public class User implements Serializable {
     private String date_birth;
    
     private String gender;
+    
+    @OneToMany(mappedBy="author")
+    private Set<Commentt> commentt=new HashSet<>();
 
     public User(){};
 
-    public User(Integer id, String name, String email, String password, String date_birth, String gender) {
+    public User(Long id, String name, String email, String password, String date_birth, String gender) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -43,11 +46,11 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,12 +93,17 @@ public class User implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    
+    
+    public Set<Commentt> getCommentt() {
+		return commentt;
+	}
+    
+    public void addCommentt(Commentt comment){
+    	commentt.add(comment);
+    }
 
-    
-    
-    
-    
-    @Override
+	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}

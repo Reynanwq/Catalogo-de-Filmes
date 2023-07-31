@@ -13,32 +13,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.catalogo_filmes.entities.Movie;
-import com.api.catalogo_filmes.service.CrudMovieService;
+import com.api.catalogo_filmes.entities.Commentt;
+import com.api.catalogo_filmes.service.CrudCommenttService;
+
 
 @RestController
-@RequestMapping(value="/movies")
-public class MovieResource {
+@RequestMapping(value="/comments")
+public class CommenttResource {
 	
 	@Autowired
-	private CrudMovieService movieService;
+	private CrudCommenttService commenttService;
 	
 	@GetMapping
-	public ResponseEntity<List<Movie>> findAll(){
-		List<Movie> list = movieService.findALL();
-		//List<Movie> listDto= list.stream().map(x -> new Movie(x)).collect(Collectors.toList());
+	public ResponseEntity<List<Commentt>> findAll(){
+		List<Commentt> list = commenttService.findALL();
+		//List<Commentt> listDto= list.stream().map(x -> new Commentt(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Movie> findById(@PathVariable Long id){
-		Movie obj = movieService.findById(id);
+	public ResponseEntity<Commentt> findById(@PathVariable Long id){
+		Commentt obj = commenttService.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@PostMapping(value="/create")
-	public ResponseEntity<Movie> insert(@RequestBody Movie obj){
-		obj=movieService.insert(obj);
+	public ResponseEntity<Commentt> insert(@RequestBody Commentt obj){
+		obj=commenttService.insert(obj);
 		//URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 		//.buildAndExpand(obj.getId()).toUri();
 		
@@ -47,15 +48,14 @@ public class MovieResource {
 	}
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
-		movieService.delete(id);
+		commenttService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping(value="/{id}")
-	public ResponseEntity<Movie> update(@PathVariable Long id,@RequestBody Movie obj){
-		 obj= movieService.update(id, obj);
+	public ResponseEntity<Commentt> update(@PathVariable Long id,@RequestBody Commentt obj){
+		 obj= commenttService.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 		
 	}
-
 }

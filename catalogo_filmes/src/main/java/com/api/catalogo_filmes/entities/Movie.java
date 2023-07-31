@@ -13,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -25,7 +26,6 @@ public class Movie  implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	
 	private Set<String> caast=new HashSet<>();
 	private String synopsis;
 	private String duration;
@@ -34,7 +34,9 @@ public class Movie  implements Serializable {
 	private String studio;
 	private String originalLanguage;
 	private String countryOfOrigin;
-	
+	@OneToMany(mappedBy = "movie")
+	private Set<Commentt> commentt=new HashSet<>();
+	@JsonIgnore
 	private List<Integer> userRating=new ArrayList<>();
 	
 	public Movie() {
@@ -42,7 +44,7 @@ public class Movie  implements Serializable {
 	}
 
 	public Movie(Long id, String title, String synopsis, String duration, String ratingSystem, String criticsRating,
-			String studio, String originalLanguage, String countryOfOrigin) {
+			String studio, String originalLanguage, String countryOfOrigin, Set<String> caast) {
 		
 		this.id = id;
 		this.title = title;
@@ -53,6 +55,7 @@ public class Movie  implements Serializable {
 		this.studio = studio;
 		this.originalLanguage = originalLanguage;
 		this.countryOfOrigin = countryOfOrigin;
+		this.caast=caast;
 	}
 
 	public Long getId() {
@@ -145,8 +148,14 @@ public class Movie  implements Serializable {
 		return caast;
 	}
 	
+
+	public Set<Commentt> getCommentt() {
+		return commentt;
+	}
 	
 	
+	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
