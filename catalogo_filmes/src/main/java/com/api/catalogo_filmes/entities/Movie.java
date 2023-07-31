@@ -19,7 +19,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="movie")
 public class Movie  implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,21 +31,19 @@ public class Movie  implements Serializable {
 	private String criticsRating;
 	private String studio;
 	private String originalLanguage;
-	private String countryOfOrigin;
-	
+	private String countryOfOrigin; 
+    private String poster;
+
 	@OneToMany(mappedBy = "movie")
 	private Set<Comment> comment=new HashSet<>();
 	
 	@JsonIgnore
 	private List<Integer> userRating=new ArrayList<>();
 	
-	public Movie() {
-		
-	}
+	public Movie(){}
 
 	public Movie(Long id, String title, String synopsis, String duration, String ratingSystem, String criticsRating,
 			String studio, String originalLanguage, String countryOfOrigin, Set<String> caast) {
-		
 		this.id = id;
 		this.title = title;
 		this.synopsis = synopsis;
@@ -130,6 +127,15 @@ public class Movie  implements Serializable {
 	public void setCountryOfOrigin(String countryOfOrigin) {
 		this.countryOfOrigin = countryOfOrigin;
 	}
+
+     public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
 	public List<Integer> getUserRating() {
 		return userRating;
 	}
@@ -143,25 +149,16 @@ public class Movie  implements Serializable {
 		}
 		return average/userRating.size();
 	}
-	
-	
 	public Set<String> getCast() {
 		return caast;
 	}
-	
-
 	public Set<Comment> getComment() {
 		return comment;
 	}
-	
-	
-	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

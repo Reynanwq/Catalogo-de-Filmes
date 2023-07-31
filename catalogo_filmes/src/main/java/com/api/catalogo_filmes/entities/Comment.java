@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 @Table(name = "comment")
 public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,19 +24,14 @@ public class Comment implements Serializable {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private User author;
- 
     private String date;
-  
     private String text;
-    
     private String time;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name="movie_id")
     private Movie movie;
-    public Comment() {
-       
-    }
+    public Comment(){}
 
     public Comment(Long id, User author,Movie movie, String date, String text, String time) {
         this.id = id;
@@ -51,7 +45,6 @@ public class Comment implements Serializable {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -62,34 +55,25 @@ public class Comment implements Serializable {
     public String getNameAuthor() {
     	return author.getName();
     }
-    
-    
     public String getDate() {
         return date;
     }
-
     public void setDate(String date) {
         this.date = date;
     }
-
     public String getText() {
         return text;
     }
-
     public void setText(String text) {
         this.text = text;
     }
-
     public String getTime() {
         return time;
     }
-
     public void setTime(String time) {
         this.time = time;
     }
-    
-    
-    
+
     @JsonIgnore
     public Movie getMovie() {
 		return movie;
@@ -125,6 +109,4 @@ public class Comment implements Serializable {
 		Comment other = (Comment) obj;
 		return Objects.equals(id, other.id);
 	}
-    
-    
 }

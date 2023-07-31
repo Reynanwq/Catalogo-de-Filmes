@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.api.catalogo_filmes.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-}
+public interface UserRepository extends JpaRepository<User, Long> {}

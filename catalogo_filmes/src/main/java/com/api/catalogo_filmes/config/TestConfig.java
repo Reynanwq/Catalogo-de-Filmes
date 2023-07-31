@@ -39,7 +39,7 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(user));
 		movieRepository.saveAll(Arrays.asList(movie));
 		
-
+		//why id is null?
 		Comment comment = new Comment(null, user, movie, "30/07/2023", "Esse filme é muito bom!", "20:36");
 		commentRepository.saveAll(Arrays.asList(comment));
 		

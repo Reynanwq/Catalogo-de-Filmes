@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.api.catalogo_filmes.entities.Comment;
 
 @Repository
-public interface CommentRepository extends JpaRepository<Comment, Long> {
-	
-}
+public interface CommentRepository extends JpaRepository<Comment, Long> {}

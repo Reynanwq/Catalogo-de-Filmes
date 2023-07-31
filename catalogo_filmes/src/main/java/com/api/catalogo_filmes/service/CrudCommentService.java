@@ -13,12 +13,8 @@ import com.api.catalogo_filmes.repository.CommentRepository;
 
 @Service
 public class CrudCommentService {
-	
-	
-	
 	@Autowired
 	private CommentRepository CommentRepository;
-	
 	public List<Comment>findALL(){
 		return CommentRepository.findAll();
 	}
@@ -27,7 +23,6 @@ public class CrudCommentService {
 		Optional<Comment> obj =CommentRepository.findById(id);
 		return obj.get();
 	}
-	
 	public Comment insert(Comment obj) {
 		return CommentRepository.save(obj);
 	}
@@ -39,16 +34,12 @@ public class CrudCommentService {
 		Comment entity = CommentRepository.getReferenceById(id);
 		updateData(entity,obj);
 		return CommentRepository.save(entity);
-		
 	}
 
-	private void updateData(Comment entity, Comment obj) {	
-		
+	private void updateData(Comment entity, Comment obj) {
 		if(obj.getText()!=null) {
 			entity.setText(obj.getText());
-			}
-		
-		
+		}
 	}
 	
 	
