@@ -3,26 +3,26 @@ package com.api.catalogo_filmes.resources;
 import java.io.IOException;
 import java.util.List;
 
+import com.api.catalogo_filmes.repository.PictureRepository;
 import jakarta.annotation.PostConstruct;
+import org.hibernate.engine.spi.SessionDelegatorBaseImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.api.catalogo_filmes.entities.Picture;
 import com.api.catalogo_filmes.service.CrudPictureService;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(value="/pictures")
 public class PictureResource {
-/*
+    @Autowired
+    private PictureRepository pictureRepository;
+
+    /*
     private static String posterPath;
 
     @Autowired
@@ -86,5 +86,20 @@ public class PictureResource {
         picture = pictureService.update(id, picture);
 
         return ResponseEntity.ok().body(picture);
+    }
+
+     @PostMapping("/upload")
+    public ResponseEntity<String> uploadImage(@RequestParam("picture_poster") MultipartFile file) {
+        try {
+            byte[] data = file.getBytes();
+            String fileName = file.getOriginalFilename();
+            Picture picture = new Picture(fileName, data);
+            SessionDelegatorBaseImpl pictureRepository = null;
+            pictureRepository.save(picture);
+            return ResponseEntity.ok("Imagem enviada com sucesso!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao enviar a imagem");
+        }
     }
 }
