@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.catalogo_filmes.dto.UserDTO;
 import com.api.catalogo_filmes.entities.User;
 import com.api.catalogo_filmes.repository.UserRepository;
+
 
 
 @Service
@@ -41,4 +43,11 @@ public class CrudUserService {
 			entity.setEmail(obj.getEmail());
 		}
 	}
+	
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName() ,null,null,objDto.getDate_birth(), objDto.getGender());
+	}
+	
+	
+	
 }
