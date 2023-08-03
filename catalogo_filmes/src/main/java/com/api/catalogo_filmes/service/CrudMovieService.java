@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.List;
 import java.util.Optional;
 
+import com.api.catalogo_filmes.dto.MovieDTO;
+import com.api.catalogo_filmes.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +56,7 @@ public class CrudMovieService {
         return movieRepository.save(obj);
     }
 
+	//test
 	public void insertData(){
 		Set<String> caast = new HashSet<>();
 		caast.add("Fernando Filmes");
@@ -61,6 +64,10 @@ public class CrudMovieService {
 		Movie movie = new Movie(null, "", "", "", "", "", "", "", "", caast);
 		movieRepository.saveAll(Arrays.asList(movie));
 
+	}
+
+	public Movie fromDTO(MovieDTO objDto){
+		return new Movie(objDto.getId(), null, null, null, null, null, null, null, null, null);
 	}
 	
 }
