@@ -1,7 +1,10 @@
 package com.api.catalogo_filmes.resources;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.api.catalogo_filmes.dto.CommentDTO;
+import com.api.catalogo_filmes.dto.MovieDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.catalogo_filmes.entities.Comment;
 import com.api.catalogo_filmes.entities.Comment;
 import com.api.catalogo_filmes.service.CrudCommentService;
 
@@ -28,14 +30,14 @@ public class CommentResource {
 	@GetMapping
 	public ResponseEntity<List<Comment>> findAll(){
 		List<Comment> list = commentService.findALL();
-		//List<Commentt> listDto= list.stream().map(x -> new Commentt(x)).collect(Collectors.toList());
+		List<CommentDTO> listDto= list.stream().map(x -> new CommentDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Comment> findById(@PathVariable Long id){
+	public ResponseEntity<CommentDTO> findById(@PathVariable Long id){
 		Comment obj = commentService.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(new CommentDTO(obj));
 	}
 	
 	@PostMapping(value="/create")

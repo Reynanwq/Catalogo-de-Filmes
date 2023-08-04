@@ -3,6 +3,9 @@ package com.api.catalogo_filmes.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.api.catalogo_filmes.dto.CommentDTO;
+import com.api.catalogo_filmes.dto.MovieDTO;
+import com.api.catalogo_filmes.entities.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +43,9 @@ public class CrudCommentService {
 		if(obj.getText()!=null) {
 			entity.setText(obj.getText());
 		}
+	}
+		public Comment fromDTO(CommentDTO objDto){
+		return new Comment(objDto.getId(), objDto.getAuthor(), objDto.getMovie(), objDto.getDate(), objDto.getText(), objDto.getTime());
 	}
 	
 	

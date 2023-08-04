@@ -33,7 +33,7 @@ public class Comment implements Serializable {
     private Movie movie;
     public Comment(){}
 
-    public Comment(Long id, User author,Movie movie, String date, String text, String time) {
+    public Comment(Long id, User author, Movie movie, String date, String text, String time) {
         this.id = id;
         this.author = author;
         this.movie=movie;
