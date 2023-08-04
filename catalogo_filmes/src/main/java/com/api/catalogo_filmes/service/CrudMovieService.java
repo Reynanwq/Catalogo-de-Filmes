@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import com.api.catalogo_filmes.dto.MovieDTO;
 import com.api.catalogo_filmes.entities.User;
+import com.api.catalogo_filmes.service.exceptions.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,10 @@ public class CrudMovieService {
 	}
 	
 	public Movie findById(Long id) {
-		Optional<Movie> obj =movieRepository.findById(id);
-		return obj.get();
+		return movieRepository.findById(id).orElseThrow(
+				() -> new EntityNotFoundException("Id not found " + id));
 	}
+
 	public Movie insert(Movie obj) {
 		return movieRepository.save(obj);
 	}

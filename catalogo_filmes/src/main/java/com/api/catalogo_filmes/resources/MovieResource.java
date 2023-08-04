@@ -33,21 +33,9 @@ public class MovieResource {
 		List<MovieDTO> listDto = list.stream().map(x -> new MovieDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
-/*
-	@PostMapping(value="/create")
-	public ResponseEntity<MovieDTO> insert(@RequestBody Movie obj) {
-		obj = movieService.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(new MovieDTO(obj));
-	}*/
-
 	@GetMapping(value="/{id}")
 	public ResponseEntity<MovieDTO> findById(@PathVariable Long id){
 		Movie obj = movieService.findById(id);
-        if (obj == null) {
-			return ResponseEntity.notFound().build();
-		}
 		return ResponseEntity.ok().body(new MovieDTO(obj));
 	}
 
