@@ -30,7 +30,7 @@ public class MovieDTO implements Serializable {
     private String countryOfOrigin;
     private String poster;
 
-    @OneToMany(mappedBy = "movie")
+    //@OneToMany(mappedBy = "movie")
     private Set<Comment> comment=new HashSet<>();
 
     @JsonIgnore
@@ -50,6 +50,7 @@ public class MovieDTO implements Serializable {
         studio=obj.getStudio();
         originalLanguage=obj.getOriginalLanguage();
         countryOfOrigin=obj.getCountryOfOrigin();
+        comment=obj.getComment();
     }
 
     public Long getId() {
