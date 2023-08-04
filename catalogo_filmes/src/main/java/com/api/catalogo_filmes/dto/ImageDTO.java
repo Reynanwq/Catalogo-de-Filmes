@@ -1,40 +1,31 @@
-package com.api.catalogo_filmes.entities;
-import java.io.Serializable;
-import java.sql.Blob;
-import java.util.Date;
+package com.api.catalogo_filmes.dto;
 
-import jakarta.persistence.Entity;
+import com.api.catalogo_filmes.entities.Image;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "image_table")
-public class Image implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+import java.io.Serializable;
+import java.sql.Blob;
+import java.util.Date;
 
-	@Id
+public class ImageDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @Lob
     private Blob image;
-
     private Date date = new Date();
-    
-    
-    
 
-    public Image() {
-		
-	}
+    public ImageDTO(){};
 
-    public Image(long id, Blob image, Date date) {
+    public ImageDTO(Image obj){
+        id = obj.getId();
+        image = obj.getImage();
+        date = obj.getDate();
     }
 
     public long getId() {
@@ -55,5 +46,9 @@ public class Image implements Serializable {
 
     public Date getDate() {
         return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -7,16 +7,15 @@ import java.util.List;
 
 import javax.sql.rowset.serial.SerialException;
 
+import com.api.catalogo_filmes.dto.CommentDTO;
+import com.api.catalogo_filmes.dto.ImageDTO;
+import com.api.catalogo_filmes.entities.Comment;
+import com.api.catalogo_filmes.service.ImageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +28,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping(value="/images")
 public class ClientController {
     @Autowired
-    private ImageService imageService;
+    private ImageServiceImpl imageService;
 
     @GetMapping("/ping")
     @ResponseBody
@@ -73,5 +72,11 @@ public class ClientController {
         image.setImage(blob);
         imageService.create(image);
         return "redirect:/";
+    }
+
+    @GetMapping(value="/{id}")
+    public ResponseEntity<ImageDTO> findById(@PathVariable Long id){
+        Image obj = imageService.findById(id);
+        return ResponseEntity.ok().body(new ImageDTO(obj));
     }
 }
