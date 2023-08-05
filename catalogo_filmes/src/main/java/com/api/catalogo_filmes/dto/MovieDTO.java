@@ -28,6 +28,8 @@ public class MovieDTO implements Serializable {
     private String studio;
     private String originalLanguage;
     private String countryOfOrigin;
+
+    private String gender;
     private String poster;
 
     //@OneToMany(mappedBy = "movie")
@@ -51,6 +53,7 @@ public class MovieDTO implements Serializable {
         originalLanguage=obj.getOriginalLanguage();
         countryOfOrigin=obj.getCountryOfOrigin();
         comment=obj.getComment();
+        gender=obj.getGender();
     }
 
     public Long getId() {
@@ -155,5 +158,13 @@ public class MovieDTO implements Serializable {
 
     public void setUserRating(List<Integer> userRating) {
         this.userRating = userRating;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

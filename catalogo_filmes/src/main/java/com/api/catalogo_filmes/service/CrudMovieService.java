@@ -59,17 +59,16 @@ public class CrudMovieService {
     }
 
 	//test
-	public void insertData(){
+/*	public void insertData(){
 		Set<String> caast = new HashSet<>();
 		caast.add("Fernando Filmes");
 		caast.add( "Aghata Filmes");
-		Movie movie = new Movie(null, "", "", "", "", "", "", "", "", caast);
+		Movie movie = new Movie(null, "reynan", "fwfewf", "fwew", "fwf", "fwfwe", "fwfww", "trgrg", "trgr", "grg", caast);
 		movieRepository.saveAll(Arrays.asList(movie));
-
-	}
+	}*/
 
 	public Movie fromDTO(MovieDTO objDto){
-		return new Movie(objDto.getId(), null, null, null, null, null, null, null, null, null);
+		return new Movie(objDto.getId(), null, null, null, null, null, null, null, null, null, null);
 	}
 	
 }

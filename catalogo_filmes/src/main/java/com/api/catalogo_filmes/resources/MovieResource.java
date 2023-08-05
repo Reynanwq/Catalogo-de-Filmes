@@ -33,6 +33,7 @@ public class MovieResource {
 		List<MovieDTO> listDto = list.stream().map(x -> new MovieDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
+
 	@GetMapping(value="/{id}")
 	public ResponseEntity<MovieDTO> findById(@PathVariable Long id){
 		Movie obj = movieService.findById(id);

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.api.catalogo_filmes.dto.ImageDTO;
+import com.api.catalogo_filmes.service.exceptions.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +32,8 @@ public class ImageServiceImpl implements ImageService {
     }
 
     public Image findById(Long id) {
-        Optional<Image> obj = imageRepository.findById(id);
-        return obj.get();
+        return imageRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("id not found " + id));
     }
 
     public Image fromDTO(ImageDTO objDto){

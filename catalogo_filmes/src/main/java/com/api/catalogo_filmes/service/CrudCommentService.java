@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.api.catalogo_filmes.dto.CommentDTO;
 import com.api.catalogo_filmes.dto.MovieDTO;
 import com.api.catalogo_filmes.entities.Movie;
+import com.api.catalogo_filmes.service.exceptions.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class CrudCommentService {
 	}
 	
 	public Comment findById(Long id) {
-		Optional<Comment> obj =CommentRepository.findById(id);
-		return obj.get();
+		return CommentRepository.findById(id).orElseThrow(
+				() -> new EntityNotFoundException("Id not found: " + id));
 	}
 	public Comment insert(Comment obj) {
 		return CommentRepository.save(obj);

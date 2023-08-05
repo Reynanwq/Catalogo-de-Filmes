@@ -31,7 +31,9 @@ public class Movie  implements Serializable {
 	private String criticsRating;
 	private String studio;
 	private String originalLanguage;
-	private String countryOfOrigin; 
+	private String countryOfOrigin;
+
+	private String gender;
     private String poster;
 
 	@OneToMany(mappedBy = "movie")
@@ -43,7 +45,7 @@ public class Movie  implements Serializable {
 	public Movie(){}
 
 	public Movie(Long id, String title, String synopsis, String duration, String ratingSystem, String criticsRating,
-			String studio, String originalLanguage, String countryOfOrigin, Set<String> caast) {
+			String studio, String originalLanguage, String countryOfOrigin, String gender, Set<String> caast) {
 		this.id = id;
 		this.title = title;
 		this.synopsis = synopsis;
@@ -53,6 +55,7 @@ public class Movie  implements Serializable {
 		this.studio = studio;
 		this.originalLanguage = originalLanguage;
 		this.countryOfOrigin = countryOfOrigin;
+		this.gender = gender;
 		this.caast=caast;
 	}
 
@@ -135,6 +138,14 @@ public class Movie  implements Serializable {
     public void setPoster(String poster) {
         this.poster = poster;
     }
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	public List<Integer> getUserRating() {
 		return userRating;
