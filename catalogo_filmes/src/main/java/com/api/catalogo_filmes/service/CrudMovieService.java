@@ -31,16 +31,45 @@ public class CrudMovieService {
 	}
 
     public List<Movie> findMoviesByTitle(String title){
-        return movieRepository.findByTitle(title);
-    }
+      List<Movie> movies = movieRepository.findByTitle(title);
+        if (movies.isEmpty()) {
+            throw new EntityNotFoundException("Movie with title '" + title + "' not found");
+        }
+        return movies;
+}
 
-	public List<Movie> findMovieByStudio(String studio){ return movieRepository.findByStudio(studio);}
+	public List<Movie> findMovieByStudio(String studio){ 
+         List<Movie> movies = movieRepository.findByStudio(studio);
+        if (movies.isEmpty()) {
+            throw new EntityNotFoundException("Movie with studio '" + studio + "' not found");
+        }
+        return movies;
 
-	public List<Movie> findMovieByGender(String gender){ return  movieRepository.findByGender(gender);}
+}
 
-	public List<Movie> findMovieByCountryOfOrigin(String countryOfOrigin){ return  movieRepository.findByCountryOfOrigin(countryOfOrigin);}
+	public List<Movie> findMovieByGender(String gender){
+      List<Movie> movies = movieRepository.findByGender(gender);
+        if (movies.isEmpty()) {
+            throw new EntityNotFoundException("Movie with gender '" + gender + "' not found");
+        }
+        return movies;
+}
 
-	public List<Movie> findMovieByOriginalLanguage(String originalLanguage){ return  movieRepository.findByOriginalLanguage(originalLanguage);}
+	public List<Movie> findMovieByCountryOfOrigin(String countryOfOrigin){
+             List<Movie> movies = movieRepository.findByCountryOfOrigin(countryOfOrigin);
+        if (movies.isEmpty()) {
+            throw new EntityNotFoundException("Movie with country of origin '" + countryOfOrigin + "' not found");
+        }
+        return movies;
+}
+
+	public List<Movie> findMovieByOriginalLanguage(String originalLanguage){
+     List<Movie> movies = movieRepository.findByOriginalLanguage(originalLanguage);
+        if (movies.isEmpty()) {
+            throw new EntityNotFoundException("Movie with original language '" + originalLanguage + "' not found");
+        }
+        return movies;
+}
 
 	public Movie insert(Movie obj) {
 		return movieRepository.save(obj);

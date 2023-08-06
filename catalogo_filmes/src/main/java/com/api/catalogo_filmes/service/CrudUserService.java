@@ -26,6 +26,22 @@ public class CrudUserService {
 				() -> new EntityNotFoundException("id not found " + id));
 	}
 
+	public List<User> findUserByName(String name){
+		List<User> users = userRepository.findByName(name);
+		if (users.isEmpty()){
+			throw new EntityNotFoundException("User with name '" + name + "' not found");
+		}
+		return users;
+	}
+
+	public List<User> findUserByGender(String gender){
+		List<User> users =  userRepository.findByGender(gender);
+		if(users.isEmpty()){
+			throw new EntityNotFoundException("User with gender '" + gender + "' not found");
+		}
+		return users;
+	}
+
 	public User insert(User obj) {
 		return userRepository.save(obj);
 	}

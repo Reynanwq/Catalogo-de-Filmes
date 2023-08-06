@@ -42,6 +42,26 @@ public class UserResource {
 		User obj = userService.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
+
+	@GetMapping(value = "/name/{name}")
+	public ResponseEntity<List<User>> getUserByName(@PathVariable String name){
+		List<User> users = userService.findUserByName(name);
+		if (users.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(users);
+		}
+	}
+
+	@GetMapping(value = "/gender/{gender}")
+	public ResponseEntity<List<User>> findByGender(@PathVariable String gender){
+		List<User> users = userService.findUserByGender(gender);
+		if (users.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(users);
+		}
+	}
 	
 	@PostMapping(value="/create")
 	public ResponseEntity<UserDTO> insert(@RequestBody User obj){
