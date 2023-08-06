@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.api.catalogo_filmes.dto.MovieDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,15 +41,59 @@ public class MovieResource {
 		return ResponseEntity.ok().body(new MovieDTO(obj));
 	}
 
+	//FIND BY TITLE
     @GetMapping("/title/{title}")
     public ResponseEntity<List<Movie>> getMoviesByTitle(@PathVariable String title) {
         List<Movie> movies = movieService.findMoviesByTitle(title);
         if (movies.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(movies);
+			return ResponseEntity.ok(movies);
         }
     }
+
+
+	//FIND BY STUDIO
+	@GetMapping(value = "/studio/{studio}")
+	public ResponseEntity<List<Movie>> getMovieByStudio(@PathVariable String studio){
+		List<Movie> movies = movieService.findMovieByStudio(studio);
+		if (movies.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(movies);
+		}
+	}
+
+	//FIND BY GENDER
+	@GetMapping(value = "/gender/{gender}")
+	public ResponseEntity<List<Movie>> getMovieByGender(@PathVariable String gender) {
+		List<Movie> movies = movieService.findMovieByGender(gender);
+		if (movies.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(movies);
+		}
+	}
+	//FIND BY ORIGINAL LANGUAGE
+	@GetMapping(value = "/originalLanguage/{originalLanguage}")
+	public ResponseEntity<List<Movie>> getMovieByOriginalLanguage(@PathVariable String originalLanguage) {
+		List<Movie> movies = movieService.findMovieByOriginalLanguage(originalLanguage);
+		if (movies.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(movies);
+		}
+	}
+	//FIND BY COUNTRY OF ORIGIN
+	@GetMapping(value = "/countryoforigin/{countryoforigin}")
+	public ResponseEntity<List<Movie>> getMovieByCountryOfOrigin(@PathVariable String countryoforigin) {
+		List<Movie> movies = movieService.findMovieByCountryOfOrigin(countryoforigin);
+		if (movies.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(movies);
+		}
+	}
 
 	@PostMapping(value="/create")
 	public ResponseEntity<Movie> create(@RequestBody Movie obj){

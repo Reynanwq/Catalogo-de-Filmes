@@ -34,6 +34,14 @@ public class CrudMovieService {
         return movieRepository.findByTitle(title);
     }
 
+	public List<Movie> findMovieByStudio(String studio){ return movieRepository.findByStudio(studio);}
+
+	public List<Movie> findMovieByGender(String gender){ return  movieRepository.findByGender(gender);}
+
+	public List<Movie> findMovieByCountryOfOrigin(String countryOfOrigin){ return  movieRepository.findByCountryOfOrigin(countryOfOrigin);}
+
+	public List<Movie> findMovieByOriginalLanguage(String originalLanguage){ return  movieRepository.findByOriginalLanguage(originalLanguage);}
+
 	public Movie insert(Movie obj) {
 		return movieRepository.save(obj);
 	}
