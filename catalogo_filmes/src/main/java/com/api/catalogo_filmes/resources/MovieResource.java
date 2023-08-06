@@ -40,6 +40,16 @@ public class MovieResource {
 		return ResponseEntity.ok().body(new MovieDTO(obj));
 	}
 
+    @GetMapping("/title/{title}")
+    public ResponseEntity<List<Movie>> getMoviesByTitle(@PathVariable String title) {
+        List<Movie> movies = movieService.findMoviesByTitle(title);
+        if (movies.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(movies);
+        }
+    }
+
 	@PostMapping(value="/create")
 	public ResponseEntity<Movie> create(@RequestBody Movie obj){
 		obj = movieService.insert(obj);

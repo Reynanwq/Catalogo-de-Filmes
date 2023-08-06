@@ -30,6 +30,10 @@ public class CrudMovieService {
 				() -> new EntityNotFoundException("Id not found " + id));
 	}
 
+    public List<Movie> findMoviesByTitle(String title){
+        return movieRepository.findByTitle(title);
+    }
+
 	public Movie insert(Movie obj) {
 		return movieRepository.save(obj);
 	}
