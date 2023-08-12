@@ -1,0 +1,36 @@
+*{
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 4px solid #59554e; 
+  display: flex;
+  justify-content: space-between;
+}
+
+header h1{
+  color: #000;
+}
+
+header p{
+  color: #000;
+  text-transform: uppercase;
+}
+
+.org-header{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+
+.org-header p{
+  letter-spacing: 3px;
+  margin-left: 20px;
+}

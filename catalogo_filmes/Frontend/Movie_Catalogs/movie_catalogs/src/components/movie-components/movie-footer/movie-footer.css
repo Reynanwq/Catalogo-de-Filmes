@@ -1,0 +1,31 @@
+.footer {
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+  color: #000;
+}
+
+.social-links{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;  
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  margin-right: 10px;
+  margin-bottom: 5px; /* Adiciona espaço entre os links na vertical */
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #000;
+}
+
+.footer p{
+  color: #000;
+}

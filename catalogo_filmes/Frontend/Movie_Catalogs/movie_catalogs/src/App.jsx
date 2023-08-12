@@ -1,20 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import Footer from './components/movie-components/movie-footer/movie-footer';
+import Header from './components/movie-components/movie-header/movie-header';
 
 function App() {
 
   return (
-    <>
       <div>
-      <h1>MOVIE CATALOGS</h1>
-      <div className="card">
-        <p>
-          KMSDNALND
-        </p>
-        </div>
+        <Header />
+       
+        <Footer />
       </div>
-    </>
   )
 }
 
