@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import './movie-header.css';
+import '../../movie-components/movie-header/movie-header.css';
 
-const movie_header = () => {
+const favorite_header = () => {
   return(
     <header className="header">
       <h1>Movie Catalogs</h1>
@@ -17,4 +17,4 @@ const movie_header = () => {
   ) 
 };
 
-export default movie_header;
+export default favorite_header;
