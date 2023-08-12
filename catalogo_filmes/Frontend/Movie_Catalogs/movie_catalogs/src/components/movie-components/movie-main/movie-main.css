@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card-achievement {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-achievement img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card-achievement h2 {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #000;
+}
+
+.card-achievement h2 span {
+  font-weight: bold;
+}
+
+.card-achievement div {
+  margin-top: 10px;
+}
+
+.card-achievement div h2 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.card-achievement div span {
+  font-weight: bold;
+  color: #fff; /* ou outra cor de destaque que você preferir */
+}
