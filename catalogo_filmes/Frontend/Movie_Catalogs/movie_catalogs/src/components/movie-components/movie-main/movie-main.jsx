@@ -8,7 +8,7 @@ function  Movie_main(){
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/characters")
+    axios.get("http://localhost:8080/movies")
       .then((response) => {
         setPosts(response.data);
       })
