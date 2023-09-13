@@ -70,20 +70,24 @@ public class TestConfig implements CommandLineRunner {
 
 		/* -------------------- INSERT MOVIES --------------------- */
 
-		Set<String> caast = new HashSet<>();
-		caast.add("Leonardo");
-		caast.add( "Adele");
-		Movie movie = new Movie(null, "aaa", "edwdwewedwe", "Filme teste", "Filme teste", "Filme teste", "Filme teste", "Filme teste", "filme teste","Filme teste",caast);
-
-		movieRepository.saveAll(Arrays.asList(movie));
+		Set<String> caast_talk_to_me = new HashSet<>();
+		caast_talk_to_me.add("Sophie Wilde");
+		caast_talk_to_me.add("Miranda Otto");
+		caast_talk_to_me.add("Otis Dhanji");
+		caast_talk_to_me.add("Alexandra Jensen");
+		caast_talk_to_me.add("Joe Bird");
+		caast_talk_to_me.add("Marcus Johnson");
+		Movie movie_talk_to_me = new Movie(null, "Talk to Me", "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces. ", "1h 35m", "94%", "With a gripping story and impressive practical effects, Talk to Me spins a terrifically creepy 21st-century horror yarn built on classic foundations", "Causeway Films", " English", "United States of America","Horro, Mystrery & Thriller", caast_talk_to_me);
+		//Movie movie = new Movie(2, "", "", "", "", "", "", "", "","", caast);
+		movieRepository.saveAll(Arrays.asList(movie_talk_to_me));
 
 		/* -------------------- INSERT COMMENTS --------------------- */
 
-		Comment comment = new Comment(null, user, movie, "31/10/2003", "Esse filme é um desastre!", "20:36");
-		Comment commentRogerio_ceni = new Comment(null, rogerio_ceni, movie, "31/10/2003", "Esse filme é um desastre!", "20:36");
+		Comment comment_reynan_paiva_talk_to_me = new Comment(null, reynan_paiva, movie_talk_to_me, "06/09/2003", "Talk to Me is a sleek, frightening, and unique construction that digs into teen loneliness and dispossession through actual possession. It is literally bone crunching and ferocious with gore aplenty but is also empathetic.", "20:36");
+		//Comment commentRogerio_ceni = new Comment(null, rogerio_ceni, movie, "31/10/2003", "Esse filme é um desastre!", "20:36");
 
-		commentRepository.saveAll(Arrays.asList(comment));
-		commentRepository.saveAll(Arrays.asList(commentRogerio_ceni));
+		commentRepository.saveAll(Arrays.asList(comment_reynan_paiva_talk_to_me));
+	//	commentRepository.saveAll(Arrays.asList(commentRogerio_ceni));
 		
 	}
 }
