@@ -29,7 +29,8 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		/* -------------------- INSERT USERS --------------------- */
+		/* ----------------------------- INSERT USERS ----------------------------- */
+
 		User user = new User(null,"Reynan", "reynan@gmail.com", "minhasenha", "14/12/1914", "Masculino");
 		User reynan_paiva = new User(null,"Reynan", "reynan@gmail.com", "123", "15/03/1944", "Masculino");
 		User paulo_paulo = new User(null,"Paulo", "paulo@gmail.com", "azul", "10/02/1970", "Masculino");
@@ -49,6 +50,7 @@ public class TestConfig implements CommandLineRunner {
 		User jorge_jesus = new User(null,"jorge_jesus", "jorge_jesus@gmail.com", "40028922", "25/05/1945", "Masculino");
 		User rogerio_ceni = new User(null,"rogerio_ceni", "rogerio_ceni@gmail.com", "313131313133", "17/09/1917", "Masculino");
 
+		/*----------------------------- SEND USERS FROM DATABASE -----------------------------*/
 		userRepository.saveAll(Arrays.asList(user));
 		userRepository.saveAll(Arrays.asList(reynan_paiva));
 		userRepository.saveAll(Arrays.asList(paulo_paulo));
@@ -68,7 +70,7 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(abel_ferreira));
 		userRepository.saveAll(Arrays.asList(jorge_jesus));
 
-		/* -------------------- INSERT MOVIES --------------------- */
+		/* ----------------------------- INSERT MOVIES ----------------------------- */
 
 		Set<String> caast_talk_to_me = new HashSet<>();
 		caast_talk_to_me.add("Sophie Wilde");
@@ -79,13 +81,18 @@ public class TestConfig implements CommandLineRunner {
 		caast_talk_to_me.add("Marcus Johnson");
 		Movie movie_talk_to_me = new Movie(null, "Talk to Me", "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces. ", "1h 35m", "94%", "With a gripping story and impressive practical effects, Talk to Me spins a terrifically creepy 21st-century horror yarn built on classic foundations", "Causeway Films", " English", "United States of America","Horro, Mystrery & Thriller", caast_talk_to_me);
 		//Movie movie = new Movie(2, "", "", "", "", "", "", "", "","", caast);
-		movieRepository.saveAll(Arrays.asList(movie_talk_to_me));
 
-		/* -------------------- INSERT COMMENTS --------------------- */
+		/*----------------------------- SEND MOVIE FROM DATABASE -----------------------------*/
+
+		movieRepository.saveAll(Arrays.asList(movie_talk_to_me));
+		//movieRepository.saveAll(Arrays.asList(SEND SOMETHING HERE!));
+
+		/* ----------------------------- INSERT COMMENTS ----------------------------- */
 
 		Comment comment_reynan_paiva_talk_to_me = new Comment(null, reynan_paiva, movie_talk_to_me, "06/09/2003", "Talk to Me is a sleek, frightening, and unique construction that digs into teen loneliness and dispossession through actual possession. It is literally bone crunching and ferocious with gore aplenty but is also empathetic.", "20:36");
-		//Comment commentRogerio_ceni = new Comment(null, rogerio_ceni, movie, "31/10/2003", "Esse filme é um desastre!", "20:36");
+		//Comment commentRogerio_ceni = new Comment(null, user, movie, "31/10/2003", "Esse filme é um desastre!", "20:36");
 
+		/*----------------------------- SEND comments FROM DATABASE -----------------------------*/
 		commentRepository.saveAll(Arrays.asList(comment_reynan_paiva_talk_to_me));
 	//	commentRepository.saveAll(Arrays.asList(commentRogerio_ceni));
 		
