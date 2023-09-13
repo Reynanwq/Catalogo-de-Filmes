@@ -73,7 +73,7 @@ public class TestConfig implements CommandLineRunner {
 		Set<String> caast = new HashSet<>();
 		caast.add("Leonardo");
 		caast.add( "Adele");
-		Movie movie = new Movie(null, "aaaaaPICADURAaaaa", "edwdwewedwe", "Filme teste", "Filme teste", "Filme teste", "Filme teste", "Filme teste", "filme teste","Filme teste",caast);
+		Movie movie = new Movie(null, "aaa", "edwdwewedwe", "Filme teste", "Filme teste", "Filme teste", "Filme teste", "Filme teste", "filme teste","Filme teste",caast);
 
 		movieRepository.saveAll(Arrays.asList(movie));
 
