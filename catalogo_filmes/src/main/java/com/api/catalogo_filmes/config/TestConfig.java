@@ -32,7 +32,7 @@ public class TestConfig implements CommandLineRunner {
 		/* ----------------------------- INSERT USERS ----------------------------- */
 
 		User user = new User(null,"Reynan", "reynan@gmail.com", "minhasenha", "14/12/1914", "Masculino");
-		User reynan_paiva = new User(null,"Reynan", "reynan@gmail.com", "123", "15/03/1944", "Masculino");
+		User reynan_paiva = new User(null,"Reynan Paiva", "reynan@gmail.com", "123", "15/03/1944", "Masculino");
 		User paulo_paulo = new User(null,"Paulo", "paulo@gmail.com", "azul", "10/02/1970", "Masculino");
 		User Freddy_Krueger = new User(null,"Freddy_Krueger", "Freddy_Krueger@gmail.com", "alo123", "11/11/1930", "Masculino");
 		User Jason_Voorhees = new User(null,"Jason_Voorhees", "Jason_Voorhees@gmail.com", "naotemsenha", "30/03/1999", "Masculino");
@@ -79,21 +79,32 @@ public class TestConfig implements CommandLineRunner {
 		caast_talk_to_me.add("Alexandra Jensen");
 		caast_talk_to_me.add("Joe Bird");
 		caast_talk_to_me.add("Marcus Johnson");
-		Movie movie_talk_to_me = new Movie(null, "Talk to Me", "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces. ", "1h 35m", "94%", "With a gripping story and impressive practical effects, Talk to Me spins a terrifically creepy 21st-century horror yarn built on classic foundations", "Causeway Films", " English", "United States of America","Horro, Mystrery & Thriller", caast_talk_to_me);
-		//Movie movie = new Movie(2, "", "", "", "", "", "", "", "","", caast);
+		Movie movieTalkToMe = new Movie(null, "Talk to Me", "When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces. ", "1h 35m", "94%", "With a gripping story and impressive practical effects, Talk to Me spins a terrifically creepy 21st-century horror yarn built on classic foundations", "Causeway Films", " English", "United States of America","Horro, Mystrery & Thriller", caast_talk_to_me);
+
+		Set<String> casstTheNun2 = new HashSet<>();
+		casstTheNun2.add("Taissa Farmiga");
+		casstTheNun2.add("Jonas Bloquet");
+		casstTheNun2.add("Storm Reid");
+		casstTheNun2.add("Anna Popplewell");
+		casstTheNun2.add("Bonie Aarons");
+		casstTheNun2.add("Katelyn Rose Downey");
+		Movie movietheNun2 = new Movie(null, "The Nun II", "1956 -- France. A priest is murdered. An evil is spreading. The sequel to the worldwide smash hit follows Sister Irene as she once again comes face-to-face with Valak, the demon nun. ", "1h 50m", "48%", "Scarier than its predecessor, The Nun II makes for an entertaining addition to the Conjuring franchise despite not being the most original horror sequel.", "Warner Bros. Pictures", "English", "United States of America","Horror, Mystery & Thriller", casstTheNun2);
 
 		/*----------------------------- SEND MOVIE FROM DATABASE -----------------------------*/
 
-		movieRepository.saveAll(Arrays.asList(movie_talk_to_me));
+		movieRepository.saveAll(Arrays.asList(movieTalkToMe));
+		movieRepository.saveAll(Arrays.asList(movietheNun2));
 		//movieRepository.saveAll(Arrays.asList(SEND SOMETHING HERE!));
 
 		/* ----------------------------- INSERT COMMENTS ----------------------------- */
 
-		Comment comment_reynan_paiva_talk_to_me = new Comment(null, reynan_paiva, movie_talk_to_me, "06/09/2003", "Talk to Me is a sleek, frightening, and unique construction that digs into teen loneliness and dispossession through actual possession. It is literally bone crunching and ferocious with gore aplenty but is also empathetic.", "20:36");
+		Comment comment_reynan_paiva_talk_to_me = new Comment(null, reynan_paiva, movieTalkToMe, "06/09/2003", "Talk to Me is a sleek, frightening, and unique construction that digs into teen loneliness and dispossession through actual possession. It is literally bone crunching and ferocious with gore aplenty but is also empathetic.", "20:36");
+		Comment commentReynanPaivaTheNun2 = new Comment(null, reynan_paiva, movietheNun2, "15/09/2023", "Branagh's Poirot is more internal and less outwardly flashy than he has been in the past, and it's an effective performance lost in a drab, dusty production.", "12:33");
 		//Comment commentRogerio_ceni = new Comment(null, user, movie, "31/10/2003", "Esse filme é um desastre!", "20:36");
 
 		/*----------------------------- SEND comments FROM DATABASE -----------------------------*/
 		commentRepository.saveAll(Arrays.asList(comment_reynan_paiva_talk_to_me));
+		commentRepository.saveAll(Arrays.asList(commentReynanPaivaTheNun2));
 	//	commentRepository.saveAll(Arrays.asList(commentRogerio_ceni));
 		
 	}
